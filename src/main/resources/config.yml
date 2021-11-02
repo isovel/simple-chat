@@ -1,0 +1,9 @@
+# --- Plugin Tag ---
+# Tag that prefixes all messages sent by the plugin
+pluginTag: "&8[&fSimple&cChat&8] "
+
+# --- Chat Format ---
+# Format for all messages sent in chat (by players)
+# Use {DISPLAYNAME} or {USERNAME} as a placeholder for where the player's name should appear in the format
+# Use {MESSAGE} as a placeholder for where the player's message should appear in the format
+chatFormat: "<{DISPLAYNAME}> {MESSAGE}"

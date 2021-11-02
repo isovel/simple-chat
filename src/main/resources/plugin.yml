@@ -1,0 +1,14 @@
+name: SimpleChat
+main: ch.isota.simplechat.SimpleChat
+version: 1.0-SNAPSHOT_1.17.1
+api-version: 1.17
+author: ToastyTheToaster
+commands:
+  nick:
+    usage: /<command> <nickname>
+    aliases: [nickname]
+    description: Changes your display name
+  screload:
+    usage: /<command>
+    aliases: [scrl]
+    description: Reloads the SimpleChat configuration
