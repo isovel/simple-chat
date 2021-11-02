@@ -30,6 +30,12 @@ public final class SimpleChat extends JavaPlugin implements Listener {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (command.getName().equalsIgnoreCase("screload")) {
+            reloadConfig();
+            sender.sendMessage(configuredPluginTag + ChatColor.GREEN + "Configuration reloaded!");
+            return true;
+        }
+
         if (!(sender instanceof Player p)) {
             sender.sendMessage(configuredPluginTag + ChatColor.RED + "This command must be executed as a player!");
             return true;
@@ -61,11 +67,6 @@ public final class SimpleChat extends JavaPlugin implements Listener {
             this.nicknameData.getConfig().set(p.getUniqueId().toString(), nick);
             this.nicknameData.saveConfig();
         }
-
-        if (command.getName().equalsIgnoreCase("screload")) {
-            reloadConfig();
-            sender.sendMessage(configuredPluginTag + ChatColor.GREEN + "Configuration reloaded!");
-        }
         return true;
     }
 
@@ -80,17 +81,15 @@ public final class SimpleChat extends JavaPlugin implements Listener {
         }
     }
 
-    public void loadConfig(boolean... isReload) {
-        if (!(isReload.length > 0 && isReload[0])) {
-            this.config = new DataManager(this, "config.yml");
-            this.nicknameData = new DataManager(this, "nicknames.yml");
-        }
+    public void loadConfig() {
+        this.config = new DataManager(this, "config.yml");
+        this.nicknameData = new DataManager(this, "nicknames.yml");
         this.configuredPluginTag = parseChatFormatting(this.config.getConfig().getString("pluginTag"));
         this.configuredChatFormat = parseConfiguredChatFormat(this.config.getConfig().getString("chatFormat"));
     }
 
     public void reloadConfig() {
-        loadConfig(true);
+        loadConfig();
     }
 
     public String parseChatFormatting(String message) {
