@@ -31,7 +31,7 @@ public final class SimpleChat extends JavaPlugin implements Listener {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!(sender instanceof Player p)) {
-            sender.sendMessage(configuredPluginTag + ChatColor.RED + "This command must be executed as a player.");
+            sender.sendMessage(configuredPluginTag + ChatColor.RED + "This command must be executed as a player!");
             return true;
         }
 
@@ -42,7 +42,7 @@ public final class SimpleChat extends JavaPlugin implements Listener {
             }
 
             if (args[0].equalsIgnoreCase("off")) {
-                p.sendMessage(configuredPluginTag + ChatColor.GREEN + "Display name reset.");
+                p.sendMessage(configuredPluginTag + ChatColor.GREEN + "Display name reset!");
                 this.nicknameData.getConfig().set(p.getUniqueId().toString(), null);
                 this.nicknameData.saveConfig();
                 return true;
