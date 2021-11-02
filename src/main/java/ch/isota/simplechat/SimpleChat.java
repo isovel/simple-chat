@@ -31,8 +31,12 @@ public final class SimpleChat extends JavaPlugin implements Listener {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (command.getName().equalsIgnoreCase("screload")) {
-            reloadConfig();
-            sender.sendMessage(configuredPluginTag + ChatColor.GREEN + "Configuration reloaded!");
+            if (sender.isOp()) {
+                reloadConfig();
+                sender.sendMessage(configuredPluginTag + ChatColor.GREEN + "Configuration reloaded!");
+            } else {
+                sender.sendMessage(configuredPluginTag + ChatColor.RED + "Insufficient permissions!");
+            }
             return true;
         }
 
